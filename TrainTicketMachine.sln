@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachine", "Train
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XTrainTicketMachineUnitTestProject", "XTrainTicketMachineUnitTestProject\XTrainTicketMachineUnitTestProject.csproj", "{1F82C238-34F1-4B3A-B2EF-4428F879023E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachineBusiness", "TrainTicketMachineBusiness\TrainTicketMachineBusiness.csproj", "{66C56843-B37B-449A-A2EC-35E9035F58F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1F82C238-34F1-4B3A-B2EF-4428F879023E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F82C238-34F1-4B3A-B2EF-4428F879023E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F82C238-34F1-4B3A-B2EF-4428F879023E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
