@@ -8,9 +8,9 @@ namespace TrainTicketMachineBusiness
 {
     interface ITicketMachine
     {
-        List<string> GetAllData();
+        List<string> GetAllData(bool type);
 
-        List<string> GetAllDataStartedWithInput(string input);
+        List<string> GetAllDataStartedWithInput(string input, List<string> dataList);
 
         char GetNextCharacter(string input, List<string> dataList);
     }
