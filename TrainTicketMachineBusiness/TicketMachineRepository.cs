@@ -11,29 +11,76 @@ namespace TrainTicketMachineBusiness
     {
         public List<string> GetAllData(bool type)
         {
-            string fileName = type ? "world - cities_csv.csv" : "metro - stations.csv";
-
-            var filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", fileName);
-            List<string> dataList = new List<string>();
-            using (var reader = new StreamReader(filePath))
+            try
             {
-                while (!reader.EndOfStream)
+                string fileName = type ? "world-cities_csv.csv" : "metro-stations.csv";
+
+                var filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", fileName);
+               
+                List<string> dataList = new List<string>();
+                using (var reader = new StreamReader(filePath))
                 {
-                    var line = reader.ReadLine();
-                    dataList.Add(line);
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        dataList.Add(line.TrimEnd(','));
+                    }
                 }
+                return dataList;
             }
-            return dataList;
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         }
 
         public List<string> GetAllDataStartedWithInput(string input, List<string> dataList)
         {
-            return dataList.Where(x => x.StartsWith(input)).ToList();
+            try
+            {
+                return dataList.Where(x => x.StartsWith(input)).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public char GetNextCharacter(string input, List<string> dataList)
+        public List<DataResult> GetAllDataObjectStartedWithInput(string input, bool type)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int inputLength = input.Length;
+                var inputResult = GetAllData(type).Where(x => x.StartsWith(input));
+                var result = (from i in inputResult
+                              select new DataResult
+                              {
+                                  Name = i,
+                                  NextCharacter = GetNextCharacter(inputLength, i)
+                              }
+                              ).ToList();
+
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+        }
+
+        public char GetNextCharacter(int length, string input)
+        {
+            if (!string.IsNullOrEmpty(input))
+            {
+                return (char)input[length];
+            }
+
+            return (char)0;
         }
     }
 }

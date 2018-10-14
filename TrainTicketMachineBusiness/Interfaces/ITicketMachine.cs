@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace TrainTicketMachineBusiness
 {
-    interface ITicketMachine
+   public interface ITicketMachine
     {
         List<string> GetAllData(bool type);
 
         List<string> GetAllDataStartedWithInput(string input, List<string> dataList);
 
-        char GetNextCharacter(string input, List<string> dataList);
+        List<DataResult> GetAllDataObjectStartedWithInput(string input, bool type);
+
+        char GetNextCharacter(int length, string input);
     }
 }

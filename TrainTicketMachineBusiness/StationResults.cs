@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrainTicketMachineBusiness
 {
-    public class StationResult
+    public class DataResult
     {
-        public string StationName { get; }
+        public string Name { get; set; }
 
         public char NextCharacter { get; set; }
     }
