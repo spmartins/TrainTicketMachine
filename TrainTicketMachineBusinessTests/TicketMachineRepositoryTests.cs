@@ -5,18 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TrainTicketMachineBusiness.Tests
 {
     [TestClass()]
     public class TicketMachineRepositoryTests
     {
+        private string _filepath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", "world-cities_csv.csv");
 
         [TestMethod()]
         public void GetAllDataStartedWithInputTest()
         {
             var repository = new TicketMachineRepository();
-            var dataList = repository.GetAllData(true);
+            var dataList = repository.GetAllData(_filepath);
             List<string> expectedData = new List<string>
             {
                 "Benguela","Bengbu","Bengkulu","Bengaluru", "Benghazi"
@@ -30,7 +32,7 @@ namespace TrainTicketMachineBusiness.Tests
         public void GetNextCharacterTest()
         {
             var repository = new TicketMachineRepository();
-            var dataList = repository.GetAllData(true);
+            var dataList = repository.GetAllData(_filepath);
 
             string text = "Bengaluru";
             int length = text.Length;
@@ -56,7 +58,7 @@ namespace TrainTicketMachineBusiness.Tests
 
             };
 
-            List<DataResult> result = repository.GetAllDataObjectStartedWithInput(text, true);
+            List<DataResult> result = repository.GetAllDataObjectStartedWithInput(text, _filepath);
             //CollectionAssert.AreEquivalent(expectedResult, result);
             Assert.AreEqual(expectedResult.FirstOrDefault().NextCharacter, result.FirstOrDefault().NextCharacter);
         }

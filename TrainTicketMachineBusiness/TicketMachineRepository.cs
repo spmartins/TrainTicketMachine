@@ -9,14 +9,10 @@ namespace TrainTicketMachineBusiness
 {
     public class TicketMachineRepository : ITicketMachine
     {
-        public List<string> GetAllData(bool type)
+        public List<string> GetAllData(string filePath)
         {
             try
-            {
-                string fileName = type ? "world-cities_csv.csv" : "metro-stations.csv";
-
-                var filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", fileName);
-               
+            {  
                 List<string> dataList = new List<string>();
                 using (var reader = new StreamReader(filePath))
                 {
@@ -49,12 +45,13 @@ namespace TrainTicketMachineBusiness
             }
         }
 
-        public List<DataResult> GetAllDataObjectStartedWithInput(string input, bool type)
+        public List<DataResult> GetAllDataObjectStartedWithInput(string input, string filePath)
         {
             try
             {
                 int inputLength = input.Length;
-                var inputResult = GetAllData(type).Where(x => x.StartsWith(input));
+                List<string> inputResult = GetAllData(filePath).Where(x => x.StartsWith(input)).ToList();
+
                 var result = (from i in inputResult
                               select new DataResult
                               {

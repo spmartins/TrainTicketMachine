@@ -6,7 +6,7 @@
     <script type="text/javascript">
 
         $("#btn_search").click(function () {
-            debugger;
+
             var input = $("#txt_search").val() ;
 
             var token = $('input[name="__RequestVerificationToken"]', $('#bookForm')).val();
@@ -21,13 +21,13 @@
                     $("#namesList").empty();
                     $("#firstLetterList").empty();
                     if (data.length == 0) {
-                        $("#namesList").append("<p>No results</p>");
-                        $("#firstLetterList").append("<p>No results</p>");
+                        $("#namesList").append("No results");
+                        $("#firstLetterList").append("No results");
                     }
                     else { 
                         data.forEach(function (element) {
-                            $("#namesList").append("<p>" + element.Name + "</p>");
-                            $("#firstLetterList").append("<p>" + element.NextCharacter + "</p>");
+                            $("#namesList").append(element.name + "\n");
+                            $("#firstLetterList").append(element.nextCharacter + "\n");
                         });
                     }
                 },
@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Custom search field</h2>
+                        <h2>Enter Text</h2>
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
                                 <input id="txt_search" type="text" class="form-control input-lg" placeholder="Buscar" />
@@ -64,15 +64,15 @@
             </div>
         </div>
     </div>
-        <div class="row">
+        <div style="margin-top:10px;" class="row">
             <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" rows="5" id="namesList"></textarea>
+                <label for="comment">Result List:</label>
+                <textarea style="width:50%" class="form-control" rows="5" id="namesList"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" rows="5" id="firstLetterList"></textarea>
+                <label for="comment">Next Character List:</label>
+                <textarea style="width:50%" class="form-control" rows="5" id="firstLetterList"></textarea>
             </div>
         </div>

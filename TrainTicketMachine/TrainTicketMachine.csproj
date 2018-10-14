@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <None Update="Data\world-cities_csv.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
