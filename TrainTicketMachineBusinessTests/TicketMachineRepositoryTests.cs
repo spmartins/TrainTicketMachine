@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Moq;
 
 namespace TrainTicketMachineBusiness.Tests
 {
     [TestClass()]
     public class TicketMachineRepositoryTests
     {
-        private string _filepath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", "world-cities_csv.csv");
+        private readonly string  _filepath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", "world-cities_csv.csv");
 
         [TestMethod()]
         public void GetAllDataStartedWithInputTest()
@@ -35,11 +36,29 @@ namespace TrainTicketMachineBusiness.Tests
             var dataList = repository.GetAllData(_filepath);
 
             string text = "Bengaluru";
-            int length = text.Length;
-            char testResult = 'a';
+            string searchText = "Beng";
+            int length = searchText.Length;
+
+            char expectedResult = 'a';
             char result = repository.GetNextCharacter(length, text);
 
-            Assert.AreEqual(testResult, result);
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod()]
+        public void GetNextCharacterTestSameLength()
+        {
+            var repository = new TicketMachineRepository();
+            var dataList = repository.GetAllData(_filepath);
+
+            string text = "Ans";
+            string searchText = "Ans";
+            int length = searchText.Length;
+
+            char expectedResult = (char)0;
+            char result = repository.GetNextCharacter(length, text);
+
+            Assert.AreEqual(expectedResult, result);
         }
 
         [TestMethod()]

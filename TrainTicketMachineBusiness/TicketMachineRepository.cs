@@ -38,7 +38,7 @@ namespace TrainTicketMachineBusiness
             {
                 return dataList.Where(x => x.StartsWith(input)).ToList();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 throw;
@@ -62,7 +62,7 @@ namespace TrainTicketMachineBusiness
 
                 return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 throw;
@@ -72,7 +72,7 @@ namespace TrainTicketMachineBusiness
 
         public char GetNextCharacter(int length, string input)
         {
-            if (!string.IsNullOrEmpty(input))
+            if (!string.IsNullOrEmpty(input) && input.Length > length )
             {
                 return (char)input[length];
             }

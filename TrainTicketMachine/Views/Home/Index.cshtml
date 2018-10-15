@@ -7,7 +7,7 @@
 
         $("#btn_search").click(function () {
 
-            var input = $("#txt_search").val() ;
+            var input = $("#txt_search").val();
 
             var token = $('input[name="__RequestVerificationToken"]', $('#bookForm')).val();
             var myData = { input: $("#txt_search").val() };
@@ -20,20 +20,25 @@
                 success: function (data) {
                     $("#namesList").empty();
                     $("#firstLetterList").empty();
+                    $("#txt_namesList_count").val("");
                     if (data.length == 0) {
                         $("#namesList").append("No results");
                         $("#firstLetterList").append("No results");
                     }
-                    else { 
+                    else {
+                        var count = 0;
                         data.forEach(function (element) {
                             $("#namesList").append(element.name + "\n");
                             $("#firstLetterList").append(element.nextCharacter + "\n");
+                            count++;
                         });
+                        $("#txt_namesList_count").val(count);
                     }
                 },
                 error: function () {
                     $("#namesList").empty();
                     $("#firstLetterList").empty();
+                    $("#txt_namesList_count").val("");
                     $("#namesList").append("<p>Error...</p>");
                 }
             });
@@ -43,36 +48,40 @@
 }
 
 @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-md-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>Enter Text</h2>
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input id="txt_search" type="text" class="form-control input-lg" placeholder="Buscar" />
-                                <span class="input-group-btn">
-                                    <button id="btn_search" class="btn btn-info btn-lg" type="button">
-                                        <i class="glyphicon glyphicon-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Search Text</h2>
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input id="txt_search" type="text" class="form-control input-lg" placeholder="Search" />
+                            <span class="input-group-btn">
+                                <button id="btn_search" class="btn btn-info btn-lg" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        <div style="margin-top:10px;" class="row">
-            <div class="form-group">
-                <label for="comment">Result List:</label>
-                <textarea style="width:50%" class="form-control" rows="5" id="namesList"></textarea>
-            </div>
+</div>
+<div style="margin-top:10px;" class="row">
+    <label for="txt_namesList_count">Result count</label>
+    <input id="txt_namesList_count" type="text" class="form-control input-lg" style="width:10%" />
+</div>
+    <div style="margin-top:10px;" class="row">
+        <div class="form-group">
+            <label for="namesList">Result List:</label>
+            <textarea style="width:45%" class="form-control" rows="5" id="namesList"></textarea>
         </div>
-        <div class="row">
-            <div class="form-group">
-                <label for="comment">Next Character List:</label>
-                <textarea style="width:50%" class="form-control" rows="5" id="firstLetterList"></textarea>
-            </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="comment">Next Character List:</label>
+            <textarea style="width:45%" class="form-control" rows="5" id="firstLetterList"></textarea>
         </div>
+    </div>
