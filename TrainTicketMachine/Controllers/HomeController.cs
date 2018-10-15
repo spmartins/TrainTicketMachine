@@ -1,37 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TrainTicketMachine.Models;
+using TrainTicketMachineBusiness;
 
 namespace TrainTicketMachine.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITicketMachine _ticketMachine;
+        public HomeController(ITicketMachine ticketMachine)
+        {
+            _ticketMachine = ticketMachine;
+        }
+
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public IActionResult GetResultData(string input)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            string filepath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data", "world-cities_csv.csv");
+            var dataList = _ticketMachine.GetAllDataObjectStartedWithInput(input, filepath);
+            return Json(dataList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

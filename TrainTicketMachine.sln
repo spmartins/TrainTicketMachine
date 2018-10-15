@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachine", "TrainTicketMachine\TrainTicketMachine.csproj", "{471AB514-2186-4EB9-A80A-86C6D9229BE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTicketMachine", "TrainTicketMachine\TrainTicketMachine.csproj", "{471AB514-2186-4EB9-A80A-86C6D9229BE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachineBusiness", "TrainTicketMachineBusiness\TrainTicketMachineBusiness.csproj", "{66C56843-B37B-449A-A2EC-35E9035F58F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachineBusinessTests", "TrainTicketMachineBusinessTests\TrainTicketMachineBusinessTests.csproj", "{5599DE3C-7DBE-425E-923F-C6A67239D559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{471AB514-2186-4EB9-A80A-86C6D9229BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{471AB514-2186-4EB9-A80A-86C6D9229BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{471AB514-2186-4EB9-A80A-86C6D9229BE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C56843-B37B-449A-A2EC-35E9035F58F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5599DE3C-7DBE-425E-923F-C6A67239D559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5599DE3C-7DBE-425E-923F-C6A67239D559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5599DE3C-7DBE-425E-923F-C6A67239D559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5599DE3C-7DBE-425E-923F-C6A67239D559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
